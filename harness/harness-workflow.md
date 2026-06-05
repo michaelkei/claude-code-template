@@ -99,3 +99,28 @@ Evaluator: テスト・実機確認・仕様照合
 - **Human-in-the-loop**: Planner と Generator の間に必ず人間の承認を挟む
 - **Independent verification**: Evaluator は Generator と同じ視点で検証しない
 - **継続的改善**: 失敗を「気をつける」で終わらせず、必ず再発防止ルールに変換する
+
+---
+
+## 補足: Dynamic Workflows（最新・2026-06公式リリース）
+
+> Anthropic公式記事: https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code
+
+このファイルが定義しているのは **静的ハーネス**（事前に決めたPlanner→Generator→Evaluatorの3層を1人のClaudeが順番に通す仕組み）です。
+2026年6月、上位互換として **Dynamic Workflows** という新機能が公式リリースされました。
+
+| | 「ハーネスやって」（このファイル） | 「ワークフローやって」（Dynamic Workflows） |
+|---|---|---|
+| 誰がやる | 1人の同じClaudeが頭の中で段階分け | Claude自身がJSを書いて別人格Claudeを複数organize |
+| 並列性 | 直列のみ | 並列実行可（worktree隔離） |
+| 検証の独立性 | 同じClaudeがEvaluatorなのでself-preferential biasの限界あり | 別contextのClaudeが検証 → 構造的に客観視 |
+| トークン消費 | 1〜2倍 | 5〜10倍以上ありうる |
+| いつ使う | **普段**（通常タスク） | **ここぞ**（長尺・徹底検証・並列で複数案・migration） |
+
+**使い方**: 「ワークフローやって」「ultracode」と自然言語で依頼するだけ。JavaScriptを書く必要なし。Claude自身がその場でハーネスを書きます。
+
+**使い分けの覚え方**:
+- ハーネス = "失敗しない仕組み"（1人で丁寧に・普段使い）
+- ワークフロー = "チームを組んで分業"（複数人で徹底的に・ここぞ）
+
+**このファイルは温存**します。Dynamic Workflowsはこの静的ハーネスを置き換えるものではなく、**上位スイッチ**として並列に使い分けます。
