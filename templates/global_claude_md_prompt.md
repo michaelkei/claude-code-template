@@ -28,7 +28,7 @@
 書く内容の例（講師・丸山の実例）:
 ```
 # About Me
-丸山 桂右（まるやま けいすけ／Keisuke Maruyama）/ 株式会社FLAPMIND 代表
+丸山 桂右（まるやま けいすけ／Keisuke Maruyama）/ 株式会社フラップマインド（FLAP MIND Inc.）代表
 非エンジニアのバイブコーダー、エージェントエンジニアリング。
 ターミナル、Claude Code、Cursor、Antigravity などの CLI・IDE を使って
 アプリ・ツール・AIエージェントを開発している。
