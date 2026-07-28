@@ -23,9 +23,9 @@ permissions.deny に次の項目を登録し、permissions.disableBypassPermissi
 完了後、~/.claude/settings.json の中身を表示してください。
 
 deny に入れる項目:
-- Read(~/.ssh/id_*) / Edit(~/.ssh/*) / Write(~/.ssh/*)
-- Read(~/.aws/credentials) / Edit(~/.aws/credentials) / Write(~/.aws/credentials)
-- Read(**/.env) / Read(**/.env.*) / Edit(**/.env) / Edit(**/.env.*) / Write(**/.env) / Write(**/.env.*)
+- Read(~/.ssh/id_*) / Edit(~/.ssh/*)
+- Read(~/.aws/credentials) / Edit(~/.aws/credentials)
+- Read(**/.env) / Read(**/.env.*) / Edit(**/.env) / Edit(**/.env.*)
 - Bash(rm -rf *) / Bash(rm -r *)
 - Bash(sudo *)
 - Bash(curl * | sh) / Bash(curl * | bash)
