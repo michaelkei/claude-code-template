@@ -22,18 +22,28 @@
 permissions.deny に次の項目を登録し、permissions.disableBypassPermissionsMode を "disable" にしてください。
 完了後、~/.claude/settings.json の中身を表示してください。
 
-deny に入れる項目:
-- Read(~/.ssh/id_*) / Edit(~/.ssh/*)
-- Read(~/.aws/credentials) / Edit(~/.aws/credentials)
-- Read(**/.env) / Read(**/.env.*) / Edit(**/.env) / Edit(**/.env.*)
+deny に入れる項目（先頭の // は「パソコン全体」を意味します。省略しないでください）:
+- Read(//**/.ssh/**) / Edit(//**/.ssh/**)
+- Read(//**/.aws/**) / Edit(//**/.aws/**)
+- Read(//**/*.pem) / Edit(//**/*.pem)
+- Read(//**/.env) / Read(//**/.env.*) / Edit(//**/.env) / Edit(//**/.env.*)
 - Bash(rm -rf *) / Bash(rm -r *)
 - Bash(sudo *)
 - Bash(curl * | sh) / Bash(curl * | bash)
 - Bash(git push --force*) / Bash(git push -f*)
 - Bash(git reset --hard*) / Bash(git clean -fd*) / Bash(git clean -f*)
+
+Write(...) というルールは追加しないでください（Claude Code の仕様上そのルールは照合されず、
+起動時に警告が出ます）。Edit(...) が書き込み系すべてをカバーします。
 ```
 
 **完了確認**: `~/.claude/settings.json` に `deny` と `disableBypassPermissionsMode: "disable"` が入っていればOK。
+
+> ⚠️ **先頭の `//` を省略しないでください**（2026-07-30 更新）
+>
+> `Read(**/.env)` と書くと、**Claude Code を起動したフォルダの下しか守られません**。別の案件フォルダやホーム直下の `.env` は素通りします。`//` を付けるとパソコン全体が対象になります。
+>
+> 鍵も**ファイル名ではなく置き場所で**守ります。`~/.ssh/id_*` では `id_` で始まらない鍵（`my-server-key` など）が守られないためです。
 
 > これでメルカリ社「Claude Code Meetup Tokyo 2026」発表の5項目（bypass禁止 / curl確認 / .env禁止 / sudo禁止 / セキュリティポリシー埋め込み）の土台が揃います（ポリシー埋め込みはハンズオン④のグローバル CLAUDE.md 側）。
 
