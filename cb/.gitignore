@@ -1,0 +1,16 @@
+# 業務エージェント用フォルダ（my-agent）の .gitignore の見本
+# このファイルを自分のプロジェクトの一番上にコピーして使う
+
+# 鍵（APIキー・トークン）を置くファイル。絶対に GitHub に上げない
+.env
+.env.*
+# ただし見本（値が入っていないもの）は上げてよい
+!.env.example
+
+# Google などからダウンロードした認証ファイル
+client_secret*.json
+credentials*.json
+token*.json
+
+# Mac が自動で作るファイル
+.DS_Store
