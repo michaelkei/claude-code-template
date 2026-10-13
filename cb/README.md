@@ -9,9 +9,9 @@ CB Full の受講者は、まずこのページを開いてください。
 |---|---|---|---|
 | CB2 | `templates/business_flow_breakdown_prompt.md` | 末尾のプロンプトを Claude Code に貼り、質問に答える（宿題①） | `docs/business-flow.md` |
 | CB3 | `templates/global_claude_md_prompt.md` | プロンプトを Claude Code に貼る | `~/.claude/CLAUDE.md`（全プロジェクト共通のルール） |
-| CB3 | `harness/harness-workflow.md` | 上のプロンプトの中で使う（自分で開かなくてよい） | `~/.claude/docs/harness-workflow.md` |
+| CB3 | `harness/harness-workflow.md` | スライドの「Step 2」の配置プロンプトを Claude Code に貼る（ファイル自体は開かなくてよい）。上の CLAUDE.md がこのファイルを参照するので、先に置いておく | `~/.claude/docs/harness-workflow.md` |
 | CB3 | `security/SECURITY-SETUP.md` | 「1.（必須）deny リスト ＋ bypass 無効化」のプロンプトを Claude Code に貼る | `~/.claude/settings.json` |
-| CB3 | `security/block-dangerous-commands.js` | 任意。SECURITY-SETUP.md の案内に従う | 危険なコマンドを止めるフック |
+| CB3 | `security/block-dangerous-commands.js` | 任意（講義では扱わない）。もう一段守りたい人だけ、SECURITY-SETUP.md の「2.（任意・発展）」のプロンプトを Claude Code に貼る | 危険なコマンドを止めるフック |
 | CB3 | `cb/.env.example`・`cb/.gitignore` | 講義で開いて説明を聞く。鍵（APIキー）をどこにどう置き、GitHub に上げないためにどうするかの見本 | —（使うときに自分のプロジェクトへコピー） |
 | CB3 | （講義スライドの依頼文） | プロジェクトの CLAUDE.md を作り、Plan Mode の計画書を保存する | `CLAUDE.md`・`docs/automation-plan.md` |
 | CB4 | `docs/automation-plan.md`（CB3 で作ったもの） | 「② 外部サービス接続が必要」に並んだサービスを1つずつつなぐ | 業務で使うサービスへの接続 |
