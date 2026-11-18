@@ -1,10 +1,10 @@
 #!/usr/bin/env node
 // Claude Code PreToolUse hook: 破壊的コマンドをブロック（deny設定の二重化・保険）
-// 全OS対応（Nodeで実行・jq/bash不要）。Claude Code が必須とする Node でそのまま動く。
+// 全OS対応（Nodeで実行・jq/bash不要）。Node.js が必要（公式インストーラで入れた Claude Code は Node.js を含まないので、node -v で確認する）。
 // 検知: rm再帰 / git push --force / git reset --hard / git clean -f / .env読み取り / SSH秘密鍵読み取り
 //
 // 使い方: ~/.claude/scripts/ に置き、~/.claude/settings.json の hooks.PreToolUse に
-//   matcher "Bash"・command "node <このファイルの絶対パス>" で登録する。
+//   matcher "Bash|PowerShell"・command "node <このファイルの絶対パス>" で登録する。
 
 let input = "";
 process.stdin.setEncoding("utf8");
@@ -20,7 +20,7 @@ process.stdin.on("end", () => {
   }
   if (!command) process.exit(0);
 
-  // [正規表現, ブロック理由] — bash版 block-dangerous-commands.sh と同一の検知ルール
+  // [正規表現, ブロック理由]
   const rules = [
     [/(^|[;&|]\s*)rm\s+(-[a-zA-Z]*r|-[a-zA-Z]*f[a-zA-Z]*r|--recursive)/, "rm -rf / rm -r（再帰削除）は禁止されています"],
     [/git\s+push\s+.*(-f|--force)/, "git push --force は禁止されています"],

@@ -6,7 +6,7 @@
 - **1（必須）** … メルカリ基準の物理ブロック（全OS共通）
 - **2（任意・発展）** … deny を二重化する検知フック（全OS対応／hookの詳細は 2-4）
 
-> Windows の方へ: **1 は全OSで動きます**（`settings.json` だけ）。2 も Node 版なので Windows / Mac / Linux すべてで動きます。
+> Windows の方へ: **1 は全OSで動きます**（`settings.json` だけ）。2 も Node 版なので Windows / Mac / Linux すべてで動きます（Node.js が必要。`node -v` で確認し、無ければ事前準備の推奨バージョンを入れる）。
 
 ---
 
@@ -72,7 +72,7 @@ Write(...) というルールは追加しないでください（Claude Code の
 **hook の仕組みは 2-4 で詳しく扱います**ので、ここは「入れておくだけ」でOK。
 
 - 検知内容: `rm -rf` / `rm -r` / `git push --force` / `git reset --hard` / `git clean -f` / `.env` 読み取り / SSH秘密鍵読み取り
-- **Node 版なので全OS対応・jq不要**（Node は Claude Code の必須環境）
+- **Node 版なので全OS対応・jq不要**（Node.js が必要。公式インストーラで入れた Claude Code は Node.js を含まない）
 - 実体ファイルは同梱の `security/block-dangerous-commands.js`
 
 📋 **配布プロンプト**（これをコピーして Claude Code に貼る）:

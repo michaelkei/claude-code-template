@@ -107,14 +107,14 @@ Evaluator: テスト・実機確認・仕様照合
 > Anthropic公式記事: https://claude.com/blog/a-harness-for-every-task-dynamic-workflows-in-claude-code
 
 このファイルが定義しているのは **静的ハーネス**（事前に決めたPlanner→Generator→Evaluatorの3層を1人のClaudeが順番に通す仕組み）です。
-2026年6月、上位互換として **Dynamic Workflows** という新機能が公式リリースされました。
+2026年6月、ここぞ用の別スイッチとして **Dynamic Workflows** という新機能が公式リリースされました。
 
 | | 「ハーネスやって」（このファイル） | 「ワークフローやって」（Dynamic Workflows） |
 |---|---|---|
 | 誰がやる | 1人の同じClaudeが頭の中で段階分け | Claude自身がJSを書いて別人格Claudeを複数organize |
 | 並列性 | 直列のみ | 並列実行可（worktree隔離） |
 | 検証の独立性 | 同じClaudeがEvaluatorなのでself-preferential biasの限界あり | 別contextのClaudeが検証 → 構造的に客観視 |
-| トークン消費 | 1〜2倍 | 5〜10倍以上ありうる |
+| トークン消費 | 1〜2倍 | 数倍〜10倍規模になりうる |
 | いつ使う | **普段**（通常タスク） | **ここぞ**（長尺・徹底検証・並列で複数案・migration） |
 
 **使い方**: 「ワークフローやって」「ultracode」と自然言語で依頼するだけ。JavaScriptを書く必要なし。Claude自身がその場でハーネスを書きます。
